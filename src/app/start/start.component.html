@@ -1,0 +1,43 @@
+<h4>Ostatnio dodane</h4>
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-3 col-sm-6" *ngFor="let furniture of latestFurniture">
+            <div class="card my-2">
+                <a href="http://localhost:4200/id/{{furniture.id}}">
+                    <img src="data:image/jpg;base64,{{furniture.image}}" alt="{{furniture.title}}"
+                    width="200px" class="card-img-top" style="cursor: pointer;">
+                 </a>
+                <div class="card-header">
+                    <div class="card-title">
+                        <a href="http://localhost:4200/id/{{furniture.id}}" class="text-reset">
+                            <p>{{furniture.title}}</p>
+                        </a>
+                        <p>{{furniture.price}} zł</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>Okazja</h4>
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-3 col-sm-6" *ngFor="let furniture of cheapestFurniture">
+            <div class="card my-2">
+                <a href="http://localhost:4200/id/{{furniture.id}}">
+                    <img src="data:image/jpg;base64,{{furniture.image}}" alt="{{furniture.title}}"
+                    width="200px" class="card-img-top" style="cursor: pointer;">
+                 </a>
+                <div class="card-header">
+                    <div class="card-title">
+                        <a href="http://localhost:4200/id/{{furniture.id}}" class="text-reset">
+                            <p>{{furniture.title}}</p>
+                        </a>
+                        <p>{{furniture.price}} zł</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

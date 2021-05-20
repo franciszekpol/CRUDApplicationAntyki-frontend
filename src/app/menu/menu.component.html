@@ -1,0 +1,77 @@
+<div class="container" id="main-container">
+    <header>
+            <ul class="nav justify-content-center navbar-light bg-light">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">START <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="/wszystkie">Wszystkie</a>
+                </li>
+                <li class="nav-item">
+                    <a (click)="onOpenModal(null)" class="nav-link" href="" data-original-title="Add" data-bs-toggle="modal" data-bs-target="#addFurnitureModal">Dodaj Mebel</a>
+                </li>
+            </ul>
+    </header>
+</div>
+
+
+<!-- Add Modal -->
+<div class="modal fade" id="addFurnitureModal" tabindex="-1" role="dialog" aria-labelledby="furnitureAddModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="addFurnitureModalLabel">Dodaj nowy mebel</h5>
+             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <form #addForm="ngForm" (ngSubmit)="addFurniture(addForm)">
+                <div class="form-group">
+                   <label for="title">Nazwa</label>
+                   <input type="text" ngModel name="title" class="form-control" id="title" placeholder="Title" required>
+                   <input type="hidden" ngModel name="id" class="form-control" id="id" placeholder="Id">
+                </div>
+                <div class="form-group">
+                    <label for="description">Opis</label>
+                    <input type="text" ngModel name="description" class="form-control" id="description" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label for="year">Rok</label>
+                    <input type="text" ngModel name="year" class="form-control" id="year" placeholder="Year">
+                </div>
+                <div class="form-group">
+                    <label for="year">Kraj pochodzenia</label>
+                    <input type="text" ngModel name="countryOfOrigin" class="form-control" id="countryOfOrigin" placeholder="Country of origin">
+                </div>
+                <div class="form-group">
+                    <label for="year">Materiał</label>
+                    <input type="text" ngModel name="material" class="form-control" id="material" placeholder="Material">
+                </div>
+                <div class="form-group">
+                    <label for="year">Styl</label>
+                    <input type="text" ngModel name="style" class="form-control" id="style" placeholder="Style">
+                </div>
+                <div class="form-group">
+                    <label for="year">Cena</label>
+                    <input type="text" ngModel name="price" class="form-control" id="price" placeholder="Price" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Kategoria</label>
+                    <input type="text" ngModel name="category" class="form-control" id="category" placeholder="Category">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Zdjęcie</label>
+                    <input type="url" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="URL zdjęcia" required>
+                </div>
+
+                <div class="modal-footer">
+                   <button type="button" id="add-furniture-form" data-bs-dismiss="modal" class="btn btn-secondary">Zamknij</button>
+                   <button [disabled]="addForm.invalid" type="submit" (click)="addFurniture(addForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Zapisz</button>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </div>
+

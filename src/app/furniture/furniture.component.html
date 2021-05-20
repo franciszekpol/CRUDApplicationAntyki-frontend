@@ -1,0 +1,104 @@
+<div class="container-xl max-width">
+    <div class="row">
+        <div class="col">
+            <img src="data:image/jpg;base64,{{furniture .image}}" 
+                class="img-fluid" alt="Responsive image">  
+        </div>
+        <div class="col">
+            <div><h4>{{furniture.title}}</h4></div>
+            <div> Nr oferty > {{furniture.id}}</div>
+            <div><h2> Cena: {{furniture.price}} zł</h2></div>
+            <div>{{furniture.description}}</div>
+            <div>{{furniture.year}}</div>
+            <div>{{furniture.countryOfOrigin}}</div>
+            <div>{{furniture.style}}</div>
+
+
+            <button (click)="onOpenModal(furniture, 'edit')" class="btn btn-primary tooltips" data-original-title="Edit" data-bs-toggle="modal" data-bs-target="#updateFurnitureModal">Edytuj</button>
+            <button (click)="onOpenModal(furniture, 'delete')" class="btn btn-danger" data-original-title="Delete" data-bs-toggle="modal" data-bs-target="#deleteFurnitureModal">Usuń</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="updateFurnitureModal" tabindex="-1" role="dialog" aria-labelledby="furnitureEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="updateFurnitureModalLabel">Edytujesz: {{furniture?.title}}</h5>
+             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <form #editForm="ngForm">
+                <div class="form-group">
+                   <label for="title">Nazwa</label>
+                   <input type="text" ngModel="{{furniture?.title}}" name="title" class="form-control" id="title" placeholder="Title" required>
+                   <input type="hidden" ngModel="{{furniture?.id}}" name="id" class="form-control" id="id" placeholder="Id">
+                   <input type="hidden" ngModel="{{furniture?.image}}" name="image" class="form-control" id="image" placeholder="Image">
+                </div>
+                <div class="form-group">
+                    <label for="description">Opis</label>
+                    <input type="text" ngModel="{{furniture?.description}}" name="description" class="form-control" id="description" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label for="year">Rok</label>
+                    <input type="text" ngModel="{{furniture?.year}}" name="year" class="form-control" id="year" placeholder="Year">
+                </div>
+                <div class="form-group">
+                    <label for="year">Kraj pochodzenia</label>
+                    <input type="text" ngModel="{{furniture?.countryOfOrigin}}" name="countryOfOrigin" class="form-control" id="countryOfOrigin" placeholder="Country of origin">
+                </div>
+                <div class="form-group">
+                    <label for="year">Materiał</label>
+                    <input type="text" ngModel="{{furniture?.material}}" name="material" class="form-control" id="material" placeholder="Material">
+                </div>
+                <div class="form-group">
+                    <label for="year">Styl</label>
+                    <input type="text" ngModel="{{furniture?.style}}" name="style" class="form-control" id="style" placeholder="Style">
+                </div>
+                <div class="form-group">
+                    <label for="year">Cena</label>
+                    <input type="text" ngModel="{{furniture?.price}}" name="price" class="form-control" id="price" placeholder="Price" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Kategoria</label>
+                    <input type="text" ngModel="{{furniture?.category}}" name="category" class="form-control" id="category" placeholder="Category" required>
+                </div>
+                
+
+                <div class="modal-footer">
+                   <button type="button" id="" data-bs-dismiss="modal" class="btn btn-secondary">Zamknij</button>
+                   <button [disabled]="editForm.invalid" type="submit" (click)="onUpdateFurniture(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Zapisz</button>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </div>
+<!-- </div> -->
+
+
+  <!-- Delete Modal -->
+<div class="modal fade" id="deleteFurnitureModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="deleteModelLabel">Usuń</h5>
+             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <p>Czy na pewno chcesz usunąć: {{furniture?.title}}?</p>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button (click)="onDeleteFurniture(furniture?.id)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
